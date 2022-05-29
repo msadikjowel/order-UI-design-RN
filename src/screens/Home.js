@@ -3,8 +3,11 @@ import { View, Text, SafeAreaView, StyleSheet, Image, Pressable } from 'react-na
 import { colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { typography } from '../theme/typography';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+    const navigation = useNavigation();
+
     return (
         <SafeAreaView style={styles.container} >
             <View style={styles.logoArea}>
@@ -23,7 +26,11 @@ const Home = () => {
                 <Text style={styles.textHeadline}>Non-Contact {"\n"} Deliveries</Text>
                 <Text style={styles.textDetails}>When placing an order, select the option "Contactless delivery" and the courier will leave your order at the door.</Text>
 
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button}
+                    onPress={() => {
+                        navigation.navigate("Details");
+                    }}
+                >
                     <Text style={styles.buttonText}>ORDER NOW</Text>
                 </Pressable>
 
